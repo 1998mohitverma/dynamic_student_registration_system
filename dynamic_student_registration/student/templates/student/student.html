@@ -1,0 +1,38 @@
+{% extends 'student/base.html' %}
+{% block title %}Adding{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 offset-3 mt-4">
+            <form action="" method="POST" class="border pl-4 pr-4 shadow font-weight-bold">
+                {% csrf_token %}
+                <h3 class="text-center p-2">Registration Form</h3>
+                {% if msg %}
+                <p class="text-success bg-light alert">{{msg}}</p>
+                {% endif %}
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="name">Student Name</label>
+                    <input type="text" name="name" id="name" class="form-control" required placeholder="Full Name">
+                </div>
+                <div class="form-group">
+                    <label for="course">Course</label>
+                    <input type="text" name="course" id="course" class="form-control" required placeholder="Ex:B.Tech">
+                </div>
+                <div class="form-group">
+                    <label for="number">University Registration Number</label>
+                    <input type="number" name="number" id="number" class="form-control" required placeholder="Ex:17-F-230338">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email-Address</label>
+                    <input type="email" name="email" id="email" class="form-control" required placeholder="Ex:name@gmail.com">
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Register" class="btn btn-success">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends 'student/base.html' %}
+{% block title %}Update Record{% endblock title %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 offset-3 mt-4">
+            <form action="" method="POST" class="border pl-4 pr-4 shadow font-weight-bold">
+                <h3 class="text-center p-2">Update Existing Student Record:</h3>
+                {% comment %} {% if msg %}
+                <p class="text-success bg-light alert">{{msg}}</p>
+                {% endif %} {% endcomment %}
+                {% csrf_token %}
+                {{form.as_p}}
+                <div class="form-group">
+                    <input type="submit" value="Register" class="btn btn-success">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

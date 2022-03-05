@@ -1,0 +1,39 @@
+{% extends 'student/base.html' %}
+{% block title %}Show all students{% endblock title %}
+{% block content %}
+<div class="container">
+    <h2 class="text-center alert-success alert mt-4">Students Information</h2>
+    <div class="row">
+        <table class="table table-bordered table-hover shadow">
+            <thead>
+              <tr class="text-center alert alert-warning">
+                <th>Student-ID</th>
+                <th>Student Name</th>
+                <th>Course</th>
+                <th>University number</th>
+                <th>Email Address</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for st in stu %}
+                <tr class="text-center">
+                    <td>{{st.id}}</td>
+                    <td>{{st.name}}</td>
+                    <td>{{st.course}}</td>
+                    <td>{{st.number}}</td>
+                    <td>{{st.email}}</td>
+                    <td>
+                        <a href="{% url 'update_student' st.id %}" class="btn btn-warning btn-sm">Edit</a>
+                        <form action="{% url 'delete_record' st.id %}" method="POST" class="d-inline">
+                            {% csrf_token %}
+                            <input type="submit" value="delete" class="btn btn-danger btn-sm">
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+          </table>
+    </div>
+</div>
+{% endblock content %}
